@@ -1,9 +1,12 @@
 #include "KnockedUpWebHandler.h"
+#include <limits>
 
 KnockedUpWebHandler::KnockedUpWebHandler(const std::string& dataFilePath, const unsigned int maxNumLines) :
     mDataFilePath(dataFilePath), mMaxNumLines(maxNumLines)
 {
-    //ctor
+    if (mMaxNumLines < 0) {
+        mMaxNumLines = std::numeric_limits<unsigned int>::max();
+    }
 }
 
 bool KnockedUpWebHandler::handleGet(CivetServer *server, struct mg_connection *conn)
