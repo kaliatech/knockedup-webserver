@@ -98,7 +98,7 @@ bool KnockedUpWebHandler::handleGet(CivetServer *server, struct mg_connection *c
 
 
 
-
+    //TODO: Make server reload command configurable (and optional)
     std::string cmdOutput = this->exec("/usr/bin/sudo /usr/bin/service nginx reload 2>&1");
 
     mg_printf(conn, "<p>Nginx status: %s</p>", cmdOutput.c_str());
